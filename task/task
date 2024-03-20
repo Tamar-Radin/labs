@@ -1,1 +1,29 @@
+// ex.1
+PUSH1 0x42
+PUSH1 0xAA
+add // ec
+
+// ex. 2
+
+PUSH1 0x42
+PUSH2 0xAAFF
+lt //0
+
+//ex. 3
+PUSH1 0x42
+PUSH2 0xAAFF
+dup2 //42
+
+//ex.4
+PUSH1 0xB2
+PUSH2 0xA1F3
+dup2 
+pop //a1f3, b2
+
+//ex.5
+PUSH1 0xB2
+PUSH2 0xA1F3
+dup2 
+pop
+add //a2a5 
 
