@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 contract Wallet {
-    address payable private owner;
+    address payable public owner;
     mapping (address => uint256) public gabaim;
 
     // Constructor: Initializes contract with owner and predefined addresses
@@ -27,7 +27,7 @@ contract Wallet {
         payable(msg.sender).transfer(amount);
     }
 
-    function update(address oldGabai, address newGabai){
+    function update(address oldGabai, address newGabai) public{
     
         require(owner == msg.sender, "Only the owner can update"); //only owner can update gabaaim
         require(gabaim[oldGabai]==1,"the old gabai is not exist"); // check if gabbai exist in the hash

@@ -41,6 +41,7 @@ contract WalletTest is Test {
         w.withdraw(5);
         uint256 balanceAfter = address(userAllow).balance;
         assertEq(balanceBefore+5, balanceAfter);
+        
 
         vm.stopPrank();
 
@@ -53,13 +54,30 @@ contract WalletTest is Test {
         uint amount = 50;
         vm.deal(address(w), amount);
         uint256 balanceBefore = address(userNotAllow).balance;
+        vm.expectRevert();
         w.withdraw(5);
-        uint256 balanceAfter = address(userAllow).balance;
-        assertEq(balanceBefore+5, balanceAfter);
+        uint256 balanceAfter = address(userNotAllow).balance;
+        assertEq(balanceBefore, balanceAfter);
 
         vm.stopPrank();
-
     }
+
+function testUpdate() public {
+    address owner = w.owner();
+    vm.startPrank(owner);
+
+    address oldGabai = 0xaC4E320Ed1235F185Bc6AC8856Ec7FEA7fF0310d;
+    address newGabai = 0x5ced660E3b925f034f99Df9466324F30A8Edf176;
+
+    // Call the update function with the old and new Gabai addresses
+    w.update(oldGabai, newGabai);
+
+    // Assert that the values in the gabaim mapping are updated as expected
+    assertEq(w.gabaim(newGabai), 1, "New Gabai not updated properly");
+    assertEq(w.gabaim(oldGabai), 0, "Old Gabai not updated properly");
+
+    vm.stopPrank();
+}
 }
 
 
