@@ -27,6 +27,15 @@ contract Wallet {
         payable(msg.sender).transfer(amount);
     }
 
+        function update(address oldGabai, address newGabai) public onlyOwner{
+    
+        require(owner == msg.sender, "Only the owner can update"); //only owner can update gabaaim
+        require(gabaim[oldGabai]==1,"the old gabai is not exist"); // check if gabbai exist in the hash
+        require(gabaim[newGabai]==0,"the gabai is exist"); // check if gabbai exist in the hash
+        gabaim[newGabai]=1;
+        gabaim[oldGabai]=0;
+    }
+
     // Get Balance function: Returns the contract's balance
     function getBalance() public view returns (uint256) {
         return address(this).balance;
