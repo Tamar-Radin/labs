@@ -45,4 +45,21 @@ contract WalletTest is Test {
         vm.stopPrank();
 
     }
+
+        function testWithdrawNotAllow() public {
+
+        address userNotAllow = 0x5ced660E3b925f034f99Df9466324F30A8Edf176;
+        vm.startPrank(userNotAllow);
+        uint amount = 50;
+        vm.deal(address(w), amount);
+        uint256 balanceBefore = address(userNotAllow).balance;
+        w.withdraw(5);
+        uint256 balanceAfter = address(userAllow).balance;
+        assertEq(balanceBefore+5, balanceAfter);
+
+        vm.stopPrank();
+
+    }
 }
+
+
