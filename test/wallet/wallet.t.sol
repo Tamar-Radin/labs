@@ -47,7 +47,7 @@ contract WalletTest is Test {
 
     }
 
-        function testWithdrawNotAllow() public {
+    function testWithdrawNotAllow() public {
 
         address userNotAllow = 0x5ced660E3b925f034f99Df9466324F30A8Edf176;
         vm.startPrank(userNotAllow);
@@ -62,22 +62,51 @@ contract WalletTest is Test {
         vm.stopPrank();
     }
 
-function testUpdate() public {
-    address owner = w.owner();
-    vm.startPrank(owner);
+    function testUpdate() public {
+        address owner = w.owner();
+        vm.startPrank(owner);
 
-    address oldGabai = 0xaC4E320Ed1235F185Bc6AC8856Ec7FEA7fF0310d;
-    address newGabai = 0x5ced660E3b925f034f99Df9466324F30A8Edf176;
+        address oldGabai = 0xaC4E320Ed1235F185Bc6AC8856Ec7FEA7fF0310d;
+        address newGabai = 0x5ced660E3b925f034f99Df9466324F30A8Edf176;
 
-    // Call the update function with the old and new Gabai addresses
-    w.update(oldGabai, newGabai);
+        // Call the update function with the old and new Gabai addresses
+        w.update(oldGabai, newGabai);
 
-    // Assert that the values in the gabaim mapping are updated as expected
-    assertEq(w.gabaim(newGabai), 1, "New Gabai not updated properly");
-    assertEq(w.gabaim(oldGabai), 0, "Old Gabai not updated properly");
 
-    vm.stopPrank();
-}
+        // Assert that the values in the gabaim mapping are updated as expected
+        assertEq(w.gabaim(newGabai), 1, "New Gabai not updated properly");
+        assertEq(w.gabaim(oldGabai), 0, "Old Gabai not updated properly");
+        // check if add exist gabai
+        vm.expectRevert();
+        w.update(oldGabai, newGabai);
+        assertEq(w.gabaim(newGabai), 1, "is ");
+        assertEq(w.gabaim(oldGabai), 0, "Old Gabai is exist");
+
+        vm.stopPrank();
+    }
+
+    function testUpdateNotOwner() public{
+
+        address randAdress= vm.addr(1111);
+        vm.startPrank(randAdress);
+        address oldGabai = 0xaC4E320Ed1235F185Bc6AC8856Ec7FEA7fF0310d;
+        address newGabai = 0x5ced660E3b925f034f99Df9466324F30A8Edf176;
+        vm.expectRevert();
+        w.update(oldGabai, newGabai);
+        assertEq(w.gabaim(newGabai), 0, "only owner can update");
+        assertEq(w.gabaim(oldGabai), 1, "only owner can update");
+
+
+
+    }
+
+    function testGetBalance() public{
+
+        assertEq(address(w).balance, w.getBalance(), "get not good");
+    }
+
+
+
 }
 
 
