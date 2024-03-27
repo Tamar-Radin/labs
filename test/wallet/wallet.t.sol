@@ -33,7 +33,7 @@ contract WalletTest is Test {
 
     function testWithdraw() public {
 
-        address userAllow = 0xaC4E320Ed1235F185Bc6AC8856Ec7FEA7fF0310d;
+        address userAllow = 0x21D665Ed3E95a19a19DCaf330e2d12bE0f43144f;
         vm.startPrank(userAllow);
         uint amount = 50;
         vm.deal(address(w), amount);
@@ -66,7 +66,7 @@ contract WalletTest is Test {
         address owner = w.owner();
         vm.startPrank(owner);
 
-        address oldGabai = 0xaC4E320Ed1235F185Bc6AC8856Ec7FEA7fF0310d;
+        address oldGabai = 0x21D665Ed3E95a19a19DCaf330e2d12bE0f43144f;
         address newGabai = 0x5ced660E3b925f034f99Df9466324F30A8Edf176;
 
         // Call the update function with the old and new Gabai addresses
@@ -89,7 +89,7 @@ contract WalletTest is Test {
 
         address randAdress= vm.addr(1111);
         vm.startPrank(randAdress);
-        address oldGabai = 0xaC4E320Ed1235F185Bc6AC8856Ec7FEA7fF0310d;
+        address oldGabai = 0x21D665Ed3E95a19a19DCaf330e2d12bE0f43144f;
         address newGabai = 0x5ced660E3b925f034f99Df9466324F30A8Edf176;
         vm.expectRevert();
         w.update(oldGabai, newGabai);
