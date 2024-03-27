@@ -9,9 +9,9 @@ contract Wallet {
     constructor() {
         owner = payable(msg.sender);
         // Predefined addresses that can withdraw
-        gabaim[0xaC4E320Ed1235F185Bc6AC8856Ec7FEA7fF0310d] = 1;
-        gabaim[0x7a3b914a1f0bD991BAf826F4fE9a47Bb9880d25f] = 1;
-        gabaim[0x0638cF39b33D063c557AE2bC4B5D22a790Ac8Fe4] = 1;
+        gabaim[0x21D665Ed3E95a19a19DCaf330e2d12bE0f43144f] = 1;
+        gabaim[0x2691200b3624C82757F28B52E4573bB61f6CCFf4] = 1;
+        gabaim[0x68BF2f4E4091C29dFa88B2c8bCBB65f00A63CE04] = 1;
     }
 
     // Fallback function: Allows the contract to receive Ether
