@@ -14,30 +14,34 @@ contract WalletTest is Test {
         w = new Wallet();
         console.log(address(this));
     }
- function testFuzz_Withdraw(uint96 amount) public {
+
+
+    }
+    function testFuzzDepossit(uint96 amount) public {
 
         uint256 preBalance = address(w).balance;
         vm.assume(amount > 0 && amount <= 100 ether);
         payable(address(w)).transfer(amount);
-        
-       // w.withdraw(amount);
         uint256 postBalance = address(w).balance;
         assertEq(preBalance + amount, postBalance);
     }
 
-        // Test deposit function
-    // function testFuzz_Deposit(uint256 depositAmount) public {
-    //     // Record the balance before deposit
-    //     uint256 preBalance = address(w).balance;
+    function testFuzzWithdraw(uint256 amount){
 
-    //     // Assumptions
-    //     vm.assume(depositAmount > 0 && depositAmount <= 1000 ether); // Deposit amount should be positive and less than or equal to 1000 ether
+            function testWithdraw() public {
 
-    //     // Act
-    //     payable(address(w)).transfer(depositAmount);
+        address userAllow = 0x21D665Ed3E95a19a19DCaf330e2d12bE0f43144f;
+        vm.startPrank(userAllow);
+        vm.assume(amount > 0.1 ether);
+        vm.deal(address(w), amount);
+        uint256 balanceBefore = address(userAllow).balance;
+        w.withdraw(amount);
+        uint256 balanceAfter = address(userAllow).balance;
+        assertEq(balanceBefore+amount, balanceAfter);
+        
 
-    //     // Assert
-    //     assertGt(address(w).balance, preBalance, "Contract balance should increase by deposit amount");
-    // }
+        vm.stopPrank();
 
-}
+    }
+    }
+
