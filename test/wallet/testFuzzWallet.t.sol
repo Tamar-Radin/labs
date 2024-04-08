@@ -16,7 +16,7 @@ contract WalletTest is Test {
     }
 
 
-    }
+    
     function testFuzzDepossit(uint96 amount) public {
 
         uint256 preBalance = address(w).balance;
@@ -26,13 +26,13 @@ contract WalletTest is Test {
         assertEq(preBalance + amount, postBalance);
     }
 
-    function testFuzzWithdraw(uint256 amount){
+    function testFuzzWithdraw(uint256 amount) public{
 
-            function testWithdraw() public {
+            
 
         address userAllow = 0x21D665Ed3E95a19a19DCaf330e2d12bE0f43144f;
         vm.startPrank(userAllow);
-        vm.assume(amount > 0.1 ether);
+       // vm.assume(amount > 0.1 ether);
         vm.deal(address(w), amount);
         uint256 balanceBefore = address(userAllow).balance;
         w.withdraw(amount);
@@ -43,5 +43,5 @@ contract WalletTest is Test {
         vm.stopPrank();
 
     }
-    }
+ }
 
