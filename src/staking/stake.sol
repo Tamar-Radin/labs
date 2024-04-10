@@ -5,7 +5,7 @@ import "../../../../src/erc.sol";
 contract Staking {
     IERC20 public immutable stakingToken;
     myToken public immutable myCoin;
-    address publicstakingToken owner;
+    address public owner;
     uint256 public totalDeposits;
     mapping (address => uint256) public userDeposite; //An array for keeping an amount of coins for each customer
     mapping (address => uint256) public depositeTime; //An array for keeping the coin deposit time for each customer
