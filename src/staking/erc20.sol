@@ -2,6 +2,7 @@
 import "lib/forge-std/src/interfaces/IERC20.sol";
 pragma solidity ^0.8.6;
 contract myToken is IERC20{
+    
     uint public totalSupply;
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;

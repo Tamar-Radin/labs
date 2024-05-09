@@ -6,12 +6,12 @@ import "forge-std/console.sol";
 import "@hack/staking/stake.sol";
 
 contract stakingTest is Test {
-    Stakink public stake;
+    Staking public stake;
 
-    function setUp() public {
-        stake = new Staking();
-        console.log(address(this));
-    }
+    // function setUp() public {
+    //     stake = new Staking();
+    //     console.log(address(this));
+    // }
 
  
 

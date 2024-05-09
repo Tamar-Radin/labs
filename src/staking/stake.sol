@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.20;
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@hack/erc.sol";
 
+
+import "@hack/staking/erc20.sol";
+import "lib/forge-std/src/interfaces/IERC20.sol";
 
 contract Staking {
     IERC20 public immutable stakingToken;
