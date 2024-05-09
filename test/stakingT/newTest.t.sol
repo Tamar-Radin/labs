@@ -2,7 +2,7 @@ pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
-import "@hack/stakingT/staking.sol";
+import "@hack/staking/staking.sol";
 
 
 contract StakingTest is Test {
@@ -22,7 +22,7 @@ contract StakingTest is Test {
         staking= new StakingRewards(address(st), address(rt));
         rt.mint(address(staking), 100_00*WAD);
         st.mint(user, 1000*wad);
-        staking.up
+        
         console.log(address(this));
     }
 
